@@ -1,0 +1,70 @@
+<form [formGroup]="cruiseForm" #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+  <div formGroupName="cruise">
+    <div class="form-group">
+      <label for="Date_of_cruise">Date of cruise <b style="color: red;">*</b></label>
+      <input formControlName="Date_of_cruise" id="Date_of_cruise" type="datetime-local" class="form-control">
+      <div *ngIf="Date_of_cruise && Date_of_cruise.invalid && Date_of_cruise.touched">
+        <div *ngIf="Date_of_cruise.errors.required" class="alert alert-danger">
+          Date is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="no_of_participants">No. Of Participants <b style="color: red;">*</b></label>
+      <input formControlName="no_of_participants" id="no_of_participants" type="number" class="form-control">
+      <div *ngIf="no_of_participants.invalid && no_of_participants.touched" class="alert alert-danger">
+        Number of participants is Required.
+      </div>
+    </div>
+    <div formGroupName="foodType">
+      <div class="form-group">
+        <p>Food category</p>
+        <input type="checkbox" id="breakfast" formControlName="breakfast" value="breakfast">
+        <label for="breakfast"> breakfast</label><br>
+        <input type="checkbox" id="lunch" formControlName="lunch" value="lunch">
+        <label for="lunch"> lunch</label><br>
+        <input type="checkbox" id="dinner" formControlName="dinner" value="dinner">
+        <label for="dinner"> dinner</label><br><br>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <p>Want to add contact information?</p>
+      <input type="radio" id="yes" (click)="showForm(true)" name="isContactAdd" formControlName="isContactAdd"
+        value="yes">
+      <label for="yes">Yes</label><br>
+      <input type="radio" id="no" (click)="showForm(false)" name="isContactAdd" formControlName="isContactAdd"
+        value="no">
+      <label for="no">No</label><br>
+      <div *ngIf="isContactAdd && isContactAdd.invalid && isContactAdd.touched">
+        <div *ngIf="isContactAdd.errors.required" class="alert alert-danger">
+          Add Contact is required.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="show">
+    <div class="form-group">
+      <p>Full name</p>
+      <input type="text" name="firstName" id="firstName" class="form-control-sm" placeholder="firstName"
+        aria-describedby="firstName" formControlName="firstName">&nbsp;
+      <input type="text" name="lastName" formControlName="lastName" id="lastName" class="form-control-sm"
+        placeholder="lastName" aria-describedby="lastName">
+      <div *ngIf="fisrtName.invalid && fisrtName.touched" class="alert alert-danger">Firstname is Required.</div>
+      <div *ngIf="lastName.invalid && lastName.touched" class="alert alert-danger">lastName is Required.</div>
+    </div>
+    <div class="form-group">
+      <p>E Mail</p>
+      <input type="email" class="form-control" formControlName="mail" name="mail" id="mail" aria-describedby="mail"
+        placeholder="">
+      <small id="mail" class="form-text text-muted">E-Mail</small>
+      <div *ngIf="mail.invalid && mail.touched" class="alert alert-danger">Mail is Required.</div>
+    </div>
+  </div>
+  <!-- <p> {{f.value | json}}</p> -->
+  <button class="btn btn-success" [disabled]="!f.valid">Submit</button>
+</form>
+
+<app-registration-details [dataRecive]="dataArray"></app-registration-details>

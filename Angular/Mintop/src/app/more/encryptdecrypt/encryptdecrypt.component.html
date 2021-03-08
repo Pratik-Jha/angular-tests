@@ -1,0 +1,41 @@
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+    <div class="w3-container" style="padding: 50px;">
+        <h2>Encryption Decryption</h2>
+        <div class="w3-card-4">
+            <header class="w3-container w3-cyan">
+                <h1>Encryption Decryption</h1>
+            </header>
+            <div class="w3-container" style="padding: 10px;">
+                <p><input #encryptdataValue style="width:75%;" type="text" name="encryptdata" id="encryptdata">&nbsp;
+                    <button style="border-radius: 5px;" (click)="Encrypt(encryptdataValue.value)"
+                        class="w3-btn w3-red">Encrypt</button>&nbsp;
+                    <button style="border-radius: 5px;" (click)="Decrypt()"
+                        class="w3-btn w3-green">Decrypt</button>
+                </p>
+
+            </div>
+            <div >
+                <footer class="w3-container">
+                    <p *ngIf="encryptedData">{{checkValue}} 
+                    <button style="border-radius: 5px;" cdkCopyToClipboard="{{encryptedData}}" class="w3-btn w3-blue">Copy</button></p>
+                    <button style="border-radius: 5px;" *ngIf="originalValue" cdkCopyToClipboard="{{encryptedData}}" class="w3-btn w3-blue">{{checkValue}} Copy</button>
+                </footer>
+            </div>
+            <!-- <div *ngIf="originalValue">
+                <footer class="w3-container">
+                    {{originalValue}}
+                    <button style="border-radius: 5px;" cdkCopyToClipboard="{{encryptedData}}"
+                        class="w3-btn w3-blue">Copy</button>
+                </footer>
+            </div> -->
+
+        </div>
+    </div>
+</body>
+
+</html>

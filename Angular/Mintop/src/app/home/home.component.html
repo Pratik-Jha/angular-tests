@@ -1,0 +1,21 @@
+<p>{{title}}</p>
+<table id="details">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Year</th>
+        <th scope="col">Color</th>
+        <th scope="col">Panton Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of _userArray">
+        <td>{{data.id}}</td>
+        <td>{{data.name}}</td>
+        <td >{{data.year}}</td>
+        <td>{{data.color}}</td>
+        <td>{{data.pantone_value}}</td>
+      </tr>
+    </tbody>
+  </table>

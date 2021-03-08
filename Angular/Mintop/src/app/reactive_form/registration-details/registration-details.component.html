@@ -1,0 +1,26 @@
+<p>Registration Deatils</p>
+<hr>
+
+<div *ngFor="let da of dataRecive">
+    <p><b>First</b> Name: {{da.firstName}}</p>
+    <p><b>Last Name:</b> {{da.lastName}}</p>
+    <p><b>Mail Id:</b> {{da.mail}}</p>
+    <p><b>No of participants:</b> {{da.cruise.no_of_participants}}</p>
+    <p><b>Date of cruise:</b> {{da.cruise.Date_of_cruise}}</p>
+    <p><b>Food Type:</b>
+    <ul>
+        <li>
+            <div *ngIf="da.cruise.foodType.breakfast == true">
+                <p>Breakfast
+            </div>
+            <div *ngIf="da.cruise.foodType.lunch == true">
+                <p>Lunch
+            </div>
+            <div *ngIf="da.cruise.foodType.dinner == true">
+                <p>Dinner
+            </div>
+        </li>
+    </ul>
+    
+    <!-- <p>{{da.cruise.foodType.breakfast, da.cruise.foodType.lunch, da.cruise.foodType.dinner}}</p> -->
+</div>
