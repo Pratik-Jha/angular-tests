@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+        integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr class="thead-dark">
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let data of student">
+                    <tr *ngIf="!data.isedit; else elseBlock">
+                        <td>
+                            {{data.Id}}
+                        </td>
+                        <td>
+                            {{data.Name}}
+                        </td>
+                        <td>
+                            {{data.Contact}}
+                        </td>
+                        <td>
+                            <a href="#" (click)="updateStudent(data)" class="btn btn-warning"><i class="fas fa-edit"></i></a> |
+                            <a href="#" (click)="deleteStudent(data.Id)" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+
+                    <!-- <tr *ngIf="data == 0 ">No records</tr> -->
+                    <ng-template #elseBlock>
+                        <tr >
+                            <td>
+                            </td>
+                            <td>
+                                {{data.Id}}
+                                {{data.Name}}
+                            </td>
+                            <td>
+                                {{data.Contact}}
+                            </td>
+                            <td>
+                                <a href="#" (click)="updateStudent(data)" class="btn btn-warning"><i class="fas fa-edit"></i></a> |
+                                <a href="#" (click)="deleteStudent(data.Id)" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
